@@ -18,8 +18,9 @@ export function PointerHighlight({
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    if (containerRef.current) {
-      const { width, height } = containerRef.current.getBoundingClientRect();
+    const currentContainer = containerRef.current;
+    if (currentContainer) {
+      const { width, height } = currentContainer.getBoundingClientRect();
       setDimensions({ width, height });
     }
 
@@ -30,13 +31,13 @@ export function PointerHighlight({
       }
     });
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    if (currentContainer) {
+      resizeObserver.observe(currentContainer);
     }
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      if (currentContainer) {
+        resizeObserver.unobserve(currentContainer);
       }
     };
   }, []);
@@ -90,7 +91,7 @@ export function PointerHighlight({
             }}
           >
             <Pointer
-              className={cn("h-5 w-5 text-blue-500", pointerClassName)}
+              className={cn("h-5 w-5 text-secondary animate-pulse", pointerClassName)}
             />
           </motion.div>
         </motion.div>

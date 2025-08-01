@@ -92,13 +92,13 @@ export function HeroSection() {
         <span className="text-primary">MINDWARE</span>
         </PointerHighlight>
           </h1>
-          <p className="mt-6 text-base text-gray-600 font-light max-w-md mx-auto lg:mx-0">
-            Descreva qualquer coisa que imagine e deixe a nossa IA dar-lhe vida em imagens de alta qualidade.
+          <p className="mt-6 text-base text-muted-foreground font-light max-w-md mx-auto lg:mx-0">
+            Criamos soluções digitais sob medida com excelência em design e engenharia de software.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Button variant="default">Começar a Criar</Button>
-            <Button variant="outline">Explorar Galeria</Button>
+            <Button variant="default">Começar</Button>
+            <Button variant="outline">Portfólio</Button>
           </div>
 
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
@@ -116,8 +116,8 @@ export function HeroSection() {
                 </Avatar>
               ))}
             </div>
-            <p className="text-sm text-gray-700 font-light">
-              Junte-se a <span className="font-semibold">2100+ Utilizadores</span> e comece a gerar.
+            <p className="text-sm text-muted-foreground font-light">
+              Junte-se a <span className="font-semibold text-secondary">+ de 100 Utilizadores</span> e comece a facilitar o seu negócio.
             </p>
           </div>
         </div>

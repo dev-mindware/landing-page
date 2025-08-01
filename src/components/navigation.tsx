@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import {
   Navbar,
@@ -11,7 +11,7 @@ import {
   NavbarLogo,
   NavbarButton,
   Icon,
-} from "@/components"; // Ajuste o caminho conforme sua estrutura
+} from "@/components";
 import { Button } from "./ui/button";
 
 interface NavigationItem {
@@ -38,6 +38,11 @@ export const Navigation = ({
 }: NavigationProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleMobileMenuToggle = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -51,25 +56,28 @@ export const Navigation = ({
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
-  const ThemeToggle = ({ isMobile = false }: { isMobile?: boolean }) => (
-    <Button
-      onClick={toggleTheme}
-      variant="ghost"
-      className="z-10"
-      aria-label="Toggle theme"
-    >
-      {theme === "dark" ? (
-        <Icon name="Sun" className="h-4 w-4" />
-      ) : (
-        <Icon name="Moon" className="h-4 w-4" />
-      )}
-      {isMobile && (
-        <span className="ml-2">
-          {theme === "dark" ? "Light Mode" : "Dark Mode"}
-        </span>
-      )}
-    </Button>
-  );
+  const ThemeToggle = ({ isMobile = false }: { isMobile?: boolean }) => {
+    if (!isMounted) return null;
+    return (
+      <Button
+        onClick={toggleTheme}
+        variant="ghost"
+        className="z-10"
+        aria-label="Toggle theme"
+      >
+        {theme === "dark" ? (
+          <Icon name="Sun" className="h-4 w-4" />
+        ) : (
+          <Icon name="Moon" className="h-4 w-4" />
+        )}
+        {isMobile && (
+          <span className="ml-2">
+            {theme === "dark" ? "Light Mode" : "Dark Mode"}
+          </span>
+        )}
+      </Button>
+    );
+  };
 
   return (
     <Navbar className={className}>
@@ -128,7 +136,7 @@ export const Navigation = ({
               {item.name}
             </a>
           ))}
-          
+
           <div className="mt-4 w-full border-t border-neutral-200 pt-4 dark:border-neutral-700">
             <div className="flex w-full items-center space-x-3">
               <ThemeToggle isMobile />
@@ -150,5 +158,4 @@ export const Navigation = ({
   );
 };
 
-// Exemplo de uso:
 export default Navigation;
