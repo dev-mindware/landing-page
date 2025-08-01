@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { HeroSection } from "@/sections/hero";
 import { Intro } from "@/components/intro";
+import { AboutSection } from "@/sections/about";
 
 export default function Home() {
   const [hasIntroFinished, setHasIntroFinished] = useState(false);
@@ -10,7 +11,12 @@ export default function Home() {
   return (
     <div className="bg-background">
       {!hasIntroFinished && <Intro onComplete={() => setHasIntroFinished(true)} />}
-      {hasIntroFinished && <HeroSection />}
+      {hasIntroFinished && (
+        <>
+          <HeroSection />
+          <AboutSection />
+        </>
+      )}
     </div>
   );
 }

@@ -18,11 +18,11 @@ export const metadata: Metadata = {
 };
 
 const navigationItems = [
-    { name: "Início", link: "/" },
-    { name: "Sobre", link: "/about" },
-    { name: "Serviços", link: "/services" },
-    { name: "Portfólio", link: "/portfolio" },
-    { name: "Contacto", link: "/contact" },
+    { name: "Início", link: "/#hero" },
+    { name: "Sobre", link: "/#about" },
+    { name: "Serviços", link: "/#services" },
+    { name: "Portfólio", link: "/#portfolio" },
+    { name: "Contacto", link: "/#contact" },
   ];
 
 export default function RootLayout({

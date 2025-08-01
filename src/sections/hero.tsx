@@ -82,8 +82,8 @@ function ImageColumn({ images, from }: { images: string[]; from: "top" | "bottom
 
 export function HeroSection() {
   return (
-    <AuroraBackground className="relative w-full">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24 overflow-hidden">
+    <AuroraBackground className="relative w-full" >
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-20 flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-24 overflow-hidden" id='hero'>
         {/* Conteúdo à Esquerda */}
         <motion.div 
           className="flex flex-col justify-center flex-1 max-w-xl z-10 text-center lg:text-left"
