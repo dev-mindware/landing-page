@@ -1,8 +1,9 @@
 "use client"
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
+import { heroVariants } from '@/components/animations';
 import { Button, Avatar, AvatarImage, AvatarFallback } from '@/components';
 import 'swiper/css';
 import Image from 'next/image';
@@ -25,104 +26,12 @@ const imagesRight = [
   "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7057568c-21af-4929-9e61-f87016595ef4.png",
 ];
 
-// Variantes de animação para o container
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1
-    }
-  }
-};
-
-// Variantes para os elementos filhos
-const itemVariants = {
-  hidden: { y: 50, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 15
-    }
-  }
-};
-
-// Variantes para as colunas de imagem
-const columnVariants = {
-  hidden: (from: string) => ({
-    y: from === "top" ? -100 : 100,
-    opacity: 0
-  }),
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 20,
-      duration: 1.2
-    }
-  }
-};
-
-// Variantes para os botões
-const buttonVariants = {
-  hidden: { scale: 0.8, opacity: 0 },
-  visible: {
-    scale: 1,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 200,
-      damping: 20
-    }
-  },
-  hover: {
-    scale: 1.05,
-    transition: {
-      type: "spring",
-      stiffness: 400,
-      damping: 10
-    }
-  },
-  tap: {
-    scale: 0.95
-  }
-};
-
-// Variantes para os avatares
-const avatarVariants = {
-  hidden: { scale: 0, rotate: -180 },
-  visible: (index: number) => ({
-    scale: 1,
-    rotate: 0,
-    transition: {
-      type: "spring",
-      stiffness: 200,
-      damping: 15,
-      delay: index * 0.1
-    }
-  }),
-  hover: {
-    scale: 1.2,
-    rotate: 10,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 10
-    }
-  }
-};
 
 function ImageColumn({ images, from }: { images: string[]; from: "top" | "bottom" }) {
   return (
     <motion.div 
       className="relative flex flex-col gap-6 max-w-xs"
-      variants={columnVariants}
+      variants={heroVariants.imageColumn}
       initial="hidden"
       animate="visible"
       custom={from}
@@ -150,11 +59,10 @@ function ImageColumn({ images, from }: { images: string[]; from: "top" | "bottom
           <SwiperSlide key={idx}>
             <motion.div 
               className="rounded-xl w-full h-48 overflow-hidden shadow-xl"
-              whileHover={{ 
-                scale: 1.02,
-                rotateY: 5,
-                transition: { duration: 0.3 }
-              }}
+              variants={heroVariants}
+              initial="rest"
+              whileHover="hover"
+              custom={from}
             >
               <Image
                 src={src}
@@ -179,13 +87,13 @@ export function HeroSection() {
         {/* Conteúdo à Esquerda */}
         <motion.div 
           className="flex flex-col justify-center flex-1 max-w-xl z-10 text-center lg:text-left"
-          variants={containerVariants}
+          variants={heroVariants.container}
           initial="hidden"
           animate="visible"
         >
           <motion.h1 
             className="text-4xl font-extrabold leading-tight text-foreground"
-            variants={itemVariants}
+            variants={heroVariants.title}
           >
             Transforme as Suas Ideias <br /> em Visuais <br /> Deslumbrantes com a{' '}
             <PointerHighlight>
@@ -211,24 +119,24 @@ export function HeroSection() {
           
           <motion.p 
             className="mt-6 text-base text-muted-foreground font-light max-w-md mx-auto lg:mx-0"
-            variants={itemVariants}
+            variants={heroVariants.content}
           >
             Criamos soluções digitais sob medida com excelência em design e engenharia de software.
           </motion.p>
 
           <motion.div 
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            variants={itemVariants}
+            variants={heroVariants.content}
           >
             <motion.div
-              variants={buttonVariants}
+              variants={heroVariants.button}
               whileHover="hover"
               whileTap="tap"
             >
               <Button variant="default">Começar</Button>
             </motion.div>
             <motion.div
-              variants={buttonVariants}
+              variants={heroVariants.button}
               whileHover="hover"
               whileTap="tap"
             >
@@ -238,13 +146,13 @@ export function HeroSection() {
 
           <motion.div 
             className="mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
-            variants={itemVariants}
+            variants={heroVariants.content}
           >
             <div className="flex -space-x-3">
               {["U1", "U2", "U3", "U4"].map((u, i) => (
                 <motion.div
                   key={i}
-                  variants={avatarVariants}
+                  variants={heroVariants.avatar}
                   custom={i}
                   whileHover="hover"
                 >
@@ -280,17 +188,9 @@ export function HeroSection() {
         {/* Colunas de Carrossel à Direita */}
         <motion.div 
           className="flex flex-1 gap-4 p-2 justify-center lg:justify-end z-0 rounded-md bg-[radial-gradient(circle_at_center,transparent_0%,transparent_30%,theme(colors.background)_50%,theme(colors.background)_100%)]"
-          initial={{ opacity: 0, x: 100 }}
-          animate={{ 
-            opacity: 1, 
-            x: 0,
-            transition: {
-              type: "spring",
-              stiffness: 60,
-              damping: 20,
-              delay: 0.5
-            }
-          }}
+          variants={heroVariants.imageContainer}
+          initial="hidden"
+          animate="visible"
         >
           <div className="hidden sm:block">
             <ImageColumn images={imagesLeft} from="top" />
