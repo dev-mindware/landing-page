@@ -39,8 +39,8 @@ export default function RootLayout({
         <Navigation
         items={navigationItems}
         showCTA={true}
-        ctaText="Log In"
-        ctaHref="/register"
+        ctaText="Login"
+        ctaHref="/"
         ctaVariant="primary"
       />
         
