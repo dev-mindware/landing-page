@@ -40,7 +40,7 @@ export default function RootLayout({
         ctaHref="/register"
         ctaVariant="primary"
       />
-        <MindwareIntro/>
+        {/* <MindwareIntro/> */}
         <main className="container">
           {children}
         </main>
