@@ -1,10 +1,16 @@
-import { HeroSection } from "@/sections/hero";
+"use client";
 
+import { useState } from "react";
+import { HeroSection } from "@/sections/hero";
+import { Intro } from "@/components/intro";
 
 export default function Home() {
+  const [hasIntroFinished, setHasIntroFinished] = useState(false);
+
   return (
     <div className="bg-background">
-      <HeroSection/>
+      {!hasIntroFinished && <Intro onComplete={() => setHasIntroFinished(true)} />}
+      {hasIntroFinished && <HeroSection />}
     </div>
   );
 }
