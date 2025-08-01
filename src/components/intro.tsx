@@ -65,14 +65,14 @@ export function Intro({ onComplete }: IntroProps) {
   }, [onComplete]);
 
   useEffect(() => {
-    // // Verificar se o intro já foi mostrado
-    // const hasSeenIntro = localStorage.getItem('hasSeenIntro');
+    // Verificar se o intro já foi mostrado
+    const hasSeenIntro = localStorage.getItem('hasSeenIntro');
     
-    // if (hasSeenIntro) {
-    //   setIsComplete(true);
-    //   onComplete?.();
-    //   return;
-    // }
+    if (hasSeenIntro) {
+      setIsComplete(true);
+      onComplete?.();
+      return;
+    }
 
     const count = setInterval(() => {
       setCounter((prevCounter) => {
