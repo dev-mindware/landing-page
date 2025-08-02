@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { gsap, CSSPlugin, Expo } from "gsap";
-
+import Logo from "@/assets/midware_logo_oficial.png";
+import Image from "next/image";
 gsap.registerPlugin(CSSPlugin);
 
 interface IntroProps {
@@ -16,11 +17,10 @@ export function Intro({ onComplete }: IntroProps) {
     const t1 = gsap.timeline({
       onComplete: () => {
         localStorage.setItem("hasSeenIntro", "true");
-
         setTimeout(() => {
           setIsComplete(true);
           onComplete?.();
-        }, 200); // breve pausa após animação
+        }, 200);
       },
     });
 
@@ -37,7 +37,11 @@ export function Intro({ onComplete }: IntroProps) {
         ease: Expo.easeInOut,
         duration: 0.5,
       })
+      // Configurações iniciais de texto e imagem
       .set(".mindware-letter", { opacity: 0, y: 20 })
+      .set(".mindware-logo", { opacity: 0, y: 20 })
+
+      // Animação das letras
       .to(
         ".mindware-letter",
         {
@@ -49,6 +53,19 @@ export function Intro({ onComplete }: IntroProps) {
         },
         "-=0.2"
       )
+
+      // Animação da imagem depois das letras
+      .to(
+        ".mindware-logo",
+        {
+          opacity: 1,
+          y: 0,
+          ease: Expo.easeOut,
+          duration: 0.5,
+        },
+        "+=0.2"
+      )
+
       .to(".follow", {
         y: "-100%",
         ease: Expo.easeInOut,
@@ -64,14 +81,13 @@ export function Intro({ onComplete }: IntroProps) {
 
   useEffect(() => {
     const hasSeenIntro = localStorage.getItem("hasSeenIntro");
-    if (hasSeenIntro) {
-      setIsComplete(true);
-      onComplete?.();
-      return;
-    }
-
-    const totalDuration = 1400; // em milissegundos
-    const step = 100 / (totalDuration / 20); // intervalo a cada 20ms
+    if (hasSeenIntro === "true") {
+    setIsComplete(true);
+    onComplete?.();
+    return;
+  }
+    const totalDuration = 1400;
+    const step = 100 / (totalDuration / 20);
 
     const count = setInterval(() => {
       setCounter((prev) => {
@@ -95,10 +111,17 @@ export function Intro({ onComplete }: IntroProps) {
     <div className="intro-container fixed inset-0 w-screen h-screen z-[9999]">
       <div className="h-full w-full bg-background flex justify-center items-center absolute top-0">
         <div
-          className="follow absolute bg-secondary h-0.5 w-0 left-0 z-20 flex items-center justify-center"
+          className="follow absolute bg-secondary h-0.5 w-0 left-0 z-20 flex flex-col items-center justify-center gap-4"
           style={{ backgroundColor: "#d39644" }}
         >
-          <span className="mindware-text flex gap-1 text-primary animate-pulse text-6xl font-bold">
+          <Image
+            src={Logo}
+            alt="Mindware"
+            className="mindware-logo opacity-0"
+            width={150}
+            height={150}
+          />
+          <span className="mindware-text flex gap-1 text-primary text-6xl font-bold">
             {"MINDWARE".split("").map((char, idx) => (
               <span key={idx} className="mindware-letter opacity-0">
                 {char}
@@ -106,6 +129,7 @@ export function Intro({ onComplete }: IntroProps) {
             ))}
           </span>
         </div>
+
         <div
           className="hide absolute left-0 bg-foreground h-0.5 transition-all duration-400 ease-out"
           id="progress-bar"
