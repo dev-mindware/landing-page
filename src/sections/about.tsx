@@ -95,7 +95,7 @@ export function AboutSection() {
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
               variants={fade("down", 0.1)}
-              className="text-foreground mt-2"
+              className="text-muted-foreground mt-4"
             >
               É uma startup angolana que cria softwares sob medida e presta serviços de design estratégico. Unimos tecnologia e criatividade para construir experiências digitais que resolvem, encantam e duram.
             </motion.p>
@@ -104,7 +104,7 @@ export function AboutSection() {
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
               variants={fade("downRight", 0.2)}
-              className="text-foreground mt-4"
+              className="text-muted-foreground mt-4"
             >
               Do código ao conceito visual, pensamos em soluções que traduzem identidade em interface e ideias em impacto. Atuamos no cruzamento entre engenharia, branding e usabilidade, sempre com foco na simplicidade funcional e na estética que comunica.
             </motion.p>
@@ -113,7 +113,7 @@ export function AboutSection() {
               whileInView="visible"
               viewport={{ once: false, amount: 0.5 }}
               variants={fade("upLeft", 0.3)}
-              className="text-foreground mt-4"
+              className="text-muted-foreground mt-4"
             >
               Mais do que entregar produtos, entregamos valor com personalidade, design com propósito e tecnologia com raiz.
             </motion.p>
