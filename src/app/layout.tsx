@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from '@/components';
+import { Navigation } from "@/components";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -16,7 +17,13 @@ export const metadata: Metadata = {
   }
 };
 
-
+const navigationItems = [
+    { name: "Início", link: "/#hero" },
+    { name: "Sobre", link: "/#about" },
+    { name: "Serviços", link: "/#services" },
+    { name: "Softwares", link: "/#softwares" },
+    { name: "FAQs", link: "/#faqs" },
+  ];
 
 export default function RootLayout({
   children,
@@ -29,6 +36,13 @@ export default function RootLayout({
         className={`${jakarta.variable} antialiased`}
       >
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Navigation
+          items={navigationItems}
+          showCTA={true}
+          ctaText="Login"
+          ctaHref="/"
+          ctaVariant="gradient"
+          />
         <main className="container">
           {children}
         </main>

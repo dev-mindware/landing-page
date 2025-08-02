@@ -4,17 +4,10 @@ import { useEffect, useState } from "react";
 import { HeroSection } from "@/sections/hero";
 import { Intro } from "@/components/intro";
 import { AboutSection } from "@/sections/about";
-import { Navigation } from "@/components";
 import { ServicesSection } from "@/sections/services";
 
 
-const navigationItems = [
-    { name: "Início", link: "/#hero" },
-    { name: "Sobre", link: "/#about" },
-    { name: "Serviços", link: "/#services" },
-    { name: "Softwares", link: "/#softwares" },
-    { name: "FAQs", link: "/#faqs" },
-  ];
+
 export default function Home() {
   const [hasIntroFinished, setHasIntroFinished] = useState(false);
   const [shouldShowIntro, setShouldShowIntro] = useState<boolean | null>(null); 
@@ -35,13 +28,7 @@ export default function Home() {
       )}
       {hasIntroFinished && (
         <>
-          <Navigation
-              items={navigationItems}
-              showCTA={true}
-              ctaText="Login"
-              ctaHref="/"
-              ctaVariant="gradient"
-              />
+          
           <HeroSection />
           <AboutSection />
           <ServicesSection />
