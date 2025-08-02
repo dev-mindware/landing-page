@@ -5,6 +5,7 @@ import { HeroSection } from "@/sections/hero";
 import { Intro } from "@/components/intro";
 import { AboutSection } from "@/sections/about";
 import { Navigation } from "@/components";
+import { ServicesSection } from "@/sections/services";
 
 
 const navigationItems = [
@@ -43,6 +44,7 @@ export default function Home() {
               />
           <HeroSection />
           <AboutSection />
+          <ServicesSection />
         </>
       )}
     </div>
