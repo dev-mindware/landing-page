@@ -11,8 +11,8 @@ const navigationItems = [
     { name: "Início", link: "/#hero" },
     { name: "Sobre", link: "/#about" },
     { name: "Serviços", link: "/#services" },
-    { name: "Portfólio", link: "/#portfolio" },
-    { name: "Contacto", link: "/#contact" },
+    { name: "Softwares", link: "/#softwares" },
+    { name: "FAQs", link: "/#faqs" },
   ];
 export default function Home() {
   const [hasIntroFinished, setHasIntroFinished] = useState(false);
