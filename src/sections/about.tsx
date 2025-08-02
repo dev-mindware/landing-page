@@ -2,8 +2,14 @@
 import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
+import { Badge } from "@/components/ui/badge";
+import { PointerHighlight } from "@/components/ui/pointer-highlight";
+import { cn } from "@/lib/utils";
+import { motionVariants, Direction } from '@/components/animations';
 
-// Variants para surgimento dos textos
+
+const fade = (direction: Direction, i?: number) => motionVariants.fadeDirection(direction, i);
+
 const containerVariants: Variants = {
   hidden: {},
   visible: {
@@ -11,15 +17,6 @@ const containerVariants: Variants = {
       staggerChildren: 0.15,
       delayChildren: 0.2,
     },
-  },
-};
-
-const textVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", damping: 18, stiffness: 80 },
   },
 };
 
@@ -60,54 +57,77 @@ export function AboutSection() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.4 }}
       >
-        <div className="overflow-hidden shadow-xl bg-white rounded-r-3xl p-2">
+        <div
+        className={cn(
+          "overflow-hidden shadow-xl bg-gradient-to-r from-foreground to-primary rounded-r-3xl p-2",
+          "[background-size:40px_40px]",
+          "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
+          "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
+        )}
+        >
           <div className="ml-10">
-            <motion.span
-              variants={textVariants}
-              className="inline-flex items-center rounded-md bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 px-3 py-1 text-sm font-medium text-white shadow-sm"
-            >
-              About Company 🤗
-            </motion.span>
+             <Badge variant={"secondary"} className="mb-4 text-background">
+              Sobre nós
+            </Badge>
 
-            <motion.h2
-              variants={textVariants}
-              className="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-4"
-            >
-              We believe in doing the right thing
-            </motion.h2>
+            <PointerHighlight>
+              <motion.span 
+                className="text-primary text-4xl sm:text-5xl font-bold tracking-tight"
+                animate={{
+                  textShadow: [
+                    "0px 0px 0px rgba(59, 130, 246, 0)",
+                    "0px 0px 20px rgba(59, 130, 246, 0.5)",
+                    "0px 0px 0px rgba(59, 130, 246, 0)"
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              >
+               A MINDWARE
+              </motion.span>
+            </PointerHighlight>
 
             <motion.p
-              variants={textVariants}
-              className="text-gray-600 text-base sm:text-lg mt-2"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              variants={fade("down", 0.1)}
+              className="text-foreground mt-2"
             >
-              Foster a supportive and inclusive environment where our team can thrive. We believe in doing the right thing, always.
+              É uma startup angolana que cria softwares sob medida e presta serviços de design estratégico. Unimos tecnologia e criatividade para construir experiências digitais que resolvem, encantam e duram.
             </motion.p>
-
-            <motion.div
-              variants={textVariants}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4"
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              variants={fade("downRight", 0.2)}
+              className="text-foreground mt-4"
             >
-              <div className="bg-white rounded-xl p-5 shadow-sm">
-                <p className="text-2xl mb-2">👍</p>
-                <h4 className="font-semibold text-lg text-gray-800">Growth</h4>
-                <p className="text-sm text-gray-600">
-                  Our mission’s to drive grow & improve progress.
-                </p>
-              </div>
-              <div className="bg-white rounded-xl p-5 shadow-sm">
-                <p className="text-2xl mb-2">🟢</p>
-                <h4 className="font-semibold text-lg text-gray-800">Revenue</h4>
-                <p className="text-sm text-gray-600">
-                  Our mission’s to drive grow & improve progress.
-                </p>
-              </div>
+              Do código ao conceito visual, pensamos em soluções que traduzem identidade em interface e ideias em impacto. Atuamos no cruzamento entre engenharia, branding e usabilidade, sempre com foco na simplicidade funcional e na estética que comunica.
+            </motion.p>
+            <motion.p
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              variants={fade("upLeft", 0.3)}
+              className="text-foreground mt-4"
+            >
+              Mais do que entregar produtos, entregamos valor com personalidade, design com propósito e tecnologia com raiz.
+            </motion.p>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.5 }}
+              variants={fade("down", 8)}
+              whileHover="hover"
+              whileTap="tap"
+              >
+              <Button variant="gradient" className="mt-4">Saiba Mais →</Button>
             </motion.div>
-
-            <motion.div variants={textVariants}>
-              <Button className="mt-6 px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition inline-flex items-center">
-                Learn More →
-              </Button>
-            </motion.div>
+  
           </div>
         </div>
       </motion.div>

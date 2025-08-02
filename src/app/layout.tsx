@@ -41,7 +41,7 @@ export default function RootLayout({
         showCTA={true}
         ctaText="Login"
         ctaHref="/"
-        ctaVariant="primary"
+        ctaVariant="gradient"
       />
         
         <main className="container">
