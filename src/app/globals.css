@@ -154,3 +154,27 @@
   @apply max-w-screen-2xl mx-auto;
   }
 }
+
+@keyframes line-up {
+  0% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  .animate-line-up {
+    animation-name: line-up;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+}
+

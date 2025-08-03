@@ -81,9 +81,9 @@ export function ServicesCards() {
                 />
               </div>
             </div>
-            <div className="mt-3 flex flex-shrink-0 items-center justify-between px-3 pb-3 font-mono text-white">
+            <div className="mt-3 flex flex-shrink-0 items-center justify-between px-3 pb-3 font-mono text-foreground gap-4">
               <div className="text-xs">{card.title}</div>
-              <div className="text-xs text-gray-300 opacity-50">#{card.id}</div>
+              <div className="text-xs text-muted-foreground opacity-50">#{card.id}</div>
             </div>
           </div>
         </CometCard>

@@ -45,7 +45,7 @@ export function AboutSection() {
         <img
           src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/622b5849-6d13-4cbe-b25e-da227f012bdd.png"
           alt="Team"
-          className="w-full h-full object-cover rounded-l-3xl"
+          className="w-full h-full object-cover md:rounded-l-3xl"
         />
       </motion.div>
 
@@ -59,7 +59,7 @@ export function AboutSection() {
       >
         <div
         className={cn(
-          "overflow-hidden shadow-xl bg-gradient-to-r from-foreground to-primary rounded-r-3xl p-2",
+          "overflow-hidden p-2",
           "[background-size:40px_40px]",
           "[background-image:linear-gradient(to_right,#e4e4e7_1px,transparent_1px),linear-gradient(to_bottom,#e4e4e7_1px,transparent_1px)]",
           "dark:[background-image:linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]",
@@ -125,7 +125,7 @@ export function AboutSection() {
               whileHover="hover"
               whileTap="tap"
               >
-              <Button variant="gradient" className="mt-4">Saiba Mais →</Button>
+              <Button className="mt-4">Saiba Mais →</Button>
             </motion.div>
   
           </div>

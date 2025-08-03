@@ -25,7 +25,7 @@ interface NavigationProps {
   showCTA?: boolean;
   ctaText?: string;
   ctaHref?: string;
-  ctaVariant?: "primary" | "secondary" | "dark" | "gradient";
+  ctaVariant?: "primary" | "secondary" | "dark";
 }
 
 export const Navigation = ({

@@ -50,6 +50,7 @@ export function SoftwareShowcase() {
           draggable={false}
         />
       </ContainerScroll>
+      <Button variant={"gradient"} className="mt-10">Obter o Software</Button>
     </div>
   );
 }

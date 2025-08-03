@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from '@/components';
 import { Navigation } from "@/components";
+import NewsletterFooter from "@/components/footer";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -21,7 +22,7 @@ const navigationItems = [
     { name: "Início", link: "/#hero" },
     { name: "Sobre", link: "/#about" },
     { name: "Serviços", link: "/#services" },
-    { name: "Softwares", link: "/#softwares" },
+    { name: "Testemunhas", link: "/#testimonials" },
     { name: "FAQs", link: "/#faqs" },
   ];
 
@@ -41,11 +42,12 @@ export default function RootLayout({
           showCTA={true}
           ctaText="Login"
           ctaHref="/"
-          ctaVariant="gradient"
+          ctaVariant="primary"
           />
         <main className="container">
           {children}
         </main>
+        <NewsletterFooter/>
       </ThemeProvider>
       </body>
     </html>
