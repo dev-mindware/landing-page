@@ -1,49 +1,47 @@
 "use client";
 import React from "react";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { motionVariants, Direction, PointerHighlight, Badge, Button } from '@/components';
+import Image from "next/image";
 
 
 const fade = (direction: Direction, i?: number) => motionVariants.fadeDirection(direction, i);
-
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
 
 export function AboutSection() {
 
   return (
     <section
       id="about"
-      className="min-h-screen relative flex flex-col md:flex-row py-20 items-center"
+      className="min-h-screen py-20"
     >
+      <div className="flex flex-col items-center justify-center py-4">
+      <Badge variant={"secondary"} className="mb-4 text-background">
+        Sobre nós
+      </Badge>
+      </div>
+      <div className="flex flex-col md:flex-row items-center justify-center">
       <motion.div
         variants={fade("right")}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.5 }}
-        className="shadow-lg w-full md:w-1/2 space-y-6 z-10"
+        className="relative aspect-[12/11] shadow-lg w-full md:w-1/2 space-y-6 z-10"
       >
-        <img
+        <Image
           src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/622b5849-6d13-4cbe-b25e-da227f012bdd.png"
           alt="Team"
-          className="w-full h-full object-cover md:rounded-l-3xl"
+          fill
+          className="object-cover md:rounded-l-3xl rounded-2xl md:rounded-r-none"
         />
       </motion.div>
 
       <motion.div
         className="relative w-full md:w-1/2 mt-10 md:mt-0"
         variants={fade("left")}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.5 }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.5 }}
       >
         <div
         className={cn(
@@ -54,10 +52,6 @@ export function AboutSection() {
         )}
         >
           <div className="ml-10">
-             <Badge variant={"secondary"} className="mb-4 text-background">
-              Sobre nós
-            </Badge>
-
             <PointerHighlight>
               <motion.span 
                 className="text-primary text-4xl sm:text-5xl font-bold tracking-tight"
@@ -119,6 +113,7 @@ export function AboutSection() {
           </div>
         </div>
       </motion.div>
+      </div>
     </section>
   );
 }

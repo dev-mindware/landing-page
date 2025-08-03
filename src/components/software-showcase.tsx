@@ -5,17 +5,33 @@ import { Button } from "./ui";
 import { PointerHighlight } from "./ui/pointer-highlight";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { motionVariants, Direction} from "@/components/animations"
 import Soft1 from "@/assets/screenshot2.png"
 
+
+const fade = (direction: Direction, i?: number) => motionVariants.fadeDirection(direction, i);
 export function SoftwareShowcase() {
   return (
     <div>
       <ContainerScroll
         titleComponent={
           <>
-            <div className="text-4xl flex flex-col items-center font-semibold text-foreground">
+            <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.5 }}
+            variants={motionVariants.fadeDirection("up", 0)}
+            className="text-4xl flex flex-col items-center font-semibold text-foreground">
               <h1>
-                Software de <span className="text-secondary">Gestão</span> e <span className="text-primary">Faturação</span>
+                Software de{" "} 
+                <span
+                className="text-secondary"
+                >Gestão
+                </span> e {" "}
+                <span
+                className="text-primary"
+                >Faturação
+                </span>
             </h1><br />
               <PointerHighlight>
               <motion.span 
@@ -37,7 +53,7 @@ export function SoftwareShowcase() {
               </motion.span>
             </PointerHighlight>
             <p className="text-muted-foreground font-light text-base">Mindgest é um software de gestão e faturação certificado pela AGT, criado para simplificar processos comerciais, controlar inventário, emitir faturas legais e garantir conformidade fiscal com agilidade e precisão. Ideal para empresas que valorizam clareza, eficiência e transparência nas operações.</p>
-            </div>
+            </motion.div>
           </>
         }
       >
@@ -50,7 +66,19 @@ export function SoftwareShowcase() {
           draggable={false}
         />
       </ContainerScroll>
-      <Button variant={"gradient"} className="mt-10">Obter o Software</Button>
+      <motion.div
+      animate={{ scale: [1, 1.05, 1] }}
+      transition={{
+        duration: 1.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <Button variant={"gradient"} className="mt-10">
+        Obter o Software
+      </Button>
+    </motion.div>
+
     </div>
   );
 }

@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     domains: [
       "storage.googleapis.com",
+      "images.unsplash.com",
+      "lh3.googleusercontent.com",
     ],
   },
 

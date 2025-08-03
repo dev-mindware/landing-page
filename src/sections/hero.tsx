@@ -7,24 +7,9 @@ import {  } from '@/components';
 import 'swiper/css';
 import Image from 'next/image';
 import { motionVariants, Direction, AuroraBackground, SplitText, PointerHighlight, Button, Avatar, AvatarImage, AvatarFallback } from "@/components";
+import { imagesLeft, imagesRight } from './data';
 
-const imagesLeft = [
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/53971fdf-6a1f-4cb0-a29c-c5445d47d64f.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f44c6ae-7489-481c-81dc-48084f08ba0d.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5283d2b6-db86-4f90-96c6-a385c99f0d36.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/53971fdf-6a1f-4cb0-a29c-c5445d47d64f.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f44c6ae-7489-481c-81dc-48084f08ba0d.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5283d2b6-db86-4f90-96c6-a385c99f0d36.png",
-];
 const fade = (direction: Direction, i?: number) => motionVariants.fadeDirection(direction, i);
-
-
-const imagesRight = [
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/95ebb7b1-ff96-4d27-9626-88a3f8a27693.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7057568c-21af-4929-9e61-f87016595ef4.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/95ebb7b1-ff96-4d27-9626-88a3f8a27693.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7057568c-21af-4929-9e61-f87016595ef4.png",
-];
 
 function ImageColumn({ images, from }: { images: string[]; from: "top" | "bottom" }) {
   return (
@@ -86,7 +71,7 @@ export function HeroSection() {
           className="flex flex-col justify-center flex-1 max-w-xl z-10 text-center lg:text-left"
           
         >
-          <motion.h1 
+          <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.5 }}
@@ -94,12 +79,13 @@ export function HeroSection() {
             variants={motionVariants.fadeDirection("up", 0)}
           >
           <SplitText
-            textOne='Transforme as Suas Ideias em '
+            textOne='Transforme as Suas Ideias em'
             textTwo='Visuais Deslumbrantes com a'
-            by='chars'
+            by='words'
             className="text-3xl font-bold"
             duration={0.05}
           />
+          <div className='flex justify-center items-center md:justify-start'>
             <PointerHighlight>
               <motion.span 
                 className="text-primary"
@@ -119,7 +105,8 @@ export function HeroSection() {
                 MINDWARE
               </motion.span>
             </PointerHighlight>
-          </motion.h1>
+          </div>
+          </motion.div>
 
           <motion.p 
             initial="hidden"

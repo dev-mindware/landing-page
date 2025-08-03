@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CometCard } from "./ui/comet-card";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,9 +71,10 @@ export function ServicesCards() {
           >
             <div className="flex-1">
               <div className="relative aspect-[3/4] w-full">
-                <img
+                <Image
                   loading="lazy"
                   className="absolute inset-0 h-full w-full rounded-[16px] bg-[#000000] object-cover contrast-75"
+                  fill
                   alt={card.title}
                   src={card.img}
                   style={{

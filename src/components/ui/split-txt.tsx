@@ -63,11 +63,11 @@ export const SplitText: React.FC<SplitTextProps> = ({
       className={clsx("inline-block whitespace-pre-wrap", className)}
       data-splittype
     >
-      <span>{textOne}</span>
+      <p>{textOne}</p>
       {textTwo && (
         <>
           <br />
-          <span>{textTwo}</span>
+          <p>{textTwo}</p>
         </>
       )}
     </div>
