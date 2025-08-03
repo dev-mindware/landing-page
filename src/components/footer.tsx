@@ -8,6 +8,8 @@ import {
   Linkedin,
   Youtube,
 } from "lucide-react";
+import Logo from "@/assets/midware_logo_oficial.png"
+import Image from "next/image";
 
 export default function NewsletterFooter() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -38,9 +40,9 @@ export default function NewsletterFooter() {
       <div className="max-w-7xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 text-sm text-muted-foreground">
         {/* Brand */}
         <div className="space-y-4">
-          <div className="flex items-center space-x-2 text-primary font-semibold text-lg">
-            <span className="inline-block">⭐</span>
-            <span>lumena</span>
+          <div className="flex items-center space-x-2 text-foreground font-semibold text-lg">
+            <Image src={Logo} alt="Logo" width={32} height={32}/>
+            <span>MINDWARE</span>
           </div>
           <p className="text-foreground font-medium leading-snug">
             Smart Living, <em>Made Easy</em>
@@ -75,7 +77,7 @@ export default function NewsletterFooter() {
 
       {/* Bottom */}
       <div className="max-w-7xl mx-auto mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 text-xs text-muted-foreground border-t border-border pt-6">
-        <span>© 2025 Lumena Technologies. Todos os direitos reservados.</span>
+        <span>© 2025 MINDWARE. Todos os direitos reservados.</span>
         <button
           onClick={scrollToTop}
           aria-label="Voltar ao topo"
