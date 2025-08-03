@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 
 export function FaqsSection() {
   return (
-    <section id="faqs" className="py-20 min-h-screen ">
+    <section id="faqs" className="py-10">
       <div className="flex flex-col items-center space-y-6">
         <Badge variant={"secondary"} className="mt-4 md:mt-0">
           Perguntas Frequentes

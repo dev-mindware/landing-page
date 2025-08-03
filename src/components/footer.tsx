@@ -15,7 +15,7 @@ export function NewsletterFooter() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-background text-foreground px-6 py-12">
+    <footer className="bg-background text-foreground px-6 py-8">
       {/* Newsletter */}
       <div className="max-w-3xl mx-auto rounded-2xl border border-border p-8 text-center">
         <h2 className="text-2xl font-bold mb-2 tracking-tight">Assine a Newsletter</h2>
