@@ -1,0 +1,5 @@
+export * from "./about"
+export * from "./hero"
+export * from "./services"
+export * from "./testimonials"
+export * from "./faqs"

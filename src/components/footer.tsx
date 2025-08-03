@@ -11,7 +11,7 @@ import {
 import Logo from "@/assets/midware_logo_oficial.png"
 import Image from "next/image";
 
-export default function NewsletterFooter() {
+export function NewsletterFooter() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (

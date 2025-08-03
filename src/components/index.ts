@@ -4,3 +4,6 @@ export * from './custom';
 export * from './theme-provider';
 export * from './navigation';
 export * from "./animations"
+export * from "./footer"
+export * from "./services-cards"
+export * from "./software-showcase"

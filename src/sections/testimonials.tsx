@@ -1,8 +1,6 @@
-import React from "react";
-import { buttonVariants } from "@/components/ui/button"; // Assuming shadcn button import
-import { cn } from "@/lib/utils"; // Utility for classNames (optional)
-import { Badge } from "@/components/ui/badge";
-import { BackgroundLines } from "@/components/ui/background-lines";
+import React from "react"; // Assuming shadcn button import
+import { cn } from "@/lib/utils";
+import { BackgroundLines, Badge, buttonVariants } from "@/components";
 
 interface Leader {
   id: number;

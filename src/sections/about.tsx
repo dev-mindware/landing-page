@@ -1,11 +1,8 @@
 "use client";
-import React, { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { PointerHighlight } from "@/components/ui/pointer-highlight";
+import React from "react";
+import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { motionVariants, Direction } from '@/components/animations';
+import { motionVariants, Direction, PointerHighlight, Badge, Button } from '@/components';
 
 
 const fade = (direction: Direction, i?: number) => motionVariants.fadeDirection(direction, i);
@@ -21,25 +18,17 @@ const containerVariants: Variants = {
 };
 
 export function AboutSection() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "center center"],
-  });
-
-  const imageX = useTransform(scrollYProgress, [0, 1], ["-50px", "0px"]);
-  const imageOpacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <section
       id="about"
       className="min-h-screen relative flex flex-col md:flex-row py-20 items-center"
-      ref={ref}
     >
-      {/* Left Image */}
       <motion.div
-        style={{ x: imageX, opacity: imageOpacity }}
-        transition={{ type: "spring", stiffness: 60, damping: 20 }}
+        variants={fade("right")}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.5 }}
         className="shadow-lg w-full md:w-1/2 space-y-6 z-10"
       >
         <img
@@ -49,13 +38,12 @@ export function AboutSection() {
         />
       </motion.div>
 
-      {/* Right Content com animação de surgimento */}
       <motion.div
         className="relative w-full md:w-1/2 mt-10 md:mt-0"
-        variants={containerVariants}
+        variants={fade("left")}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.4 }}
+        viewport={{ once: false, amount: 0.5 }}
       >
         <div
         className={cn(

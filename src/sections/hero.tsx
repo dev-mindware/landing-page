@@ -3,13 +3,10 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
-import { motionVariants, Direction } from '@/components/animations';
-import { Button, Avatar, AvatarImage, AvatarFallback } from '@/components';
+import {  } from '@/components';
 import 'swiper/css';
 import Image from 'next/image';
-import { PointerHighlight } from "@/components/ui/pointer-highlight";
-import { AuroraBackground } from "@/components/ui/aurora-background";
-import { SplitText } from '@/components/ui/split-txt';
+import { motionVariants, Direction, AuroraBackground, SplitText, PointerHighlight, Button, Avatar, AvatarImage, AvatarFallback } from "@/components";
 
 const imagesLeft = [
   "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/53971fdf-6a1f-4cb0-a29c-c5445d47d64f.png",
@@ -207,12 +204,12 @@ export function HeroSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.5 }}
-            variants={fade("right", 6)}
+            variants={fade("right", 2)}
           >
             <ImageColumn images={imagesLeft} from="top" />
           </motion.div>
           <motion.div 
-          variants={fade("left", 4)}
+          variants={fade("left")}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.5 }}

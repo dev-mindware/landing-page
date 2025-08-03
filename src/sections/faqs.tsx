@@ -4,10 +4,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+  Badge,
+} from "@/components";
 import { FAQList } from "./data";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 
 export function FaqsSection() {
   return (

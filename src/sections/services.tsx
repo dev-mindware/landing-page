@@ -1,7 +1,4 @@
-import { ServicesCards } from "@/components/services-cards";
-import { SoftwareShowcase } from "@/components/software-showcase";
-import { Badge } from "@/components/ui/badge";
-import { ContainerTextFlip } from "@/components/ui/container-text-flip";
+import { ContainerTextFlip, Badge, ServicesCards, SoftwareShowcase } from "@/components";
 
 export function ServicesSection () {
     return (
