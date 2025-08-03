@@ -15,7 +15,7 @@ export default function NewsletterFooter() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-background text-foreground px-6 py-16">
+    <footer className="bg-background text-foreground px-6 py-12">
       {/* Newsletter */}
       <div className="max-w-3xl mx-auto rounded-2xl border border-border p-8 text-center">
         <h2 className="text-2xl font-bold mb-2 tracking-tight">Assine a Newsletter</h2>
@@ -45,11 +45,11 @@ export default function NewsletterFooter() {
             <span>MINDWARE</span>
           </div>
           <p className="text-foreground font-medium leading-snug">
-            Smart Living, <em>Made Easy</em>
+            A mente cria, <em>o código segue</em>
           </p>
           <address className="not-italic">
-            123 Smart Lane, Tech City, FR<br />
-            +33 1 23 45 67 89
+            Luanda - Vila Alice, Angola<br />
+            +244 926 665 793
           </address>
           <div className="flex space-x-3 mt-3">
             {[Facebook, Instagram, Youtube, Linkedin].map((Icon, i) => (
@@ -76,7 +76,7 @@ export default function NewsletterFooter() {
       </div>
 
       {/* Bottom */}
-      <div className="max-w-7xl mx-auto mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 text-xs text-muted-foreground border-t border-border pt-6">
+      <div className="mx-auto mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 text-xs text-muted-foreground border-t border-border pt-6">
         <span>© 2025 MINDWARE. Todos os direitos reservados.</span>
         <button
           onClick={scrollToTop}
