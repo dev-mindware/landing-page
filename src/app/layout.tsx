@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 };
 
 const navigationItems = [
-    { name: "Início", link: "/#hero" },
-    { name: "Sobre", link: "/#about" },
-    { name: "Serviços", link: "/#services" },
-    { name: "Testemunhas", link: "/#testimonials" },
-    { name: "FAQs", link: "/#faqs" },
+    { name: "Início", link: "#hero" },
+    { name: "Sobre", link: "#about" },
+    { name: "Serviços", link: "#services" },
+    { name: "Testemunhas", link: "#testimonials" },
+    { name: "FAQs", link: "#faqs" },
   ];
 
 export default function RootLayout({

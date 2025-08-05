@@ -109,17 +109,17 @@ export const FAQList: FAQProps[] = [
 
 
 export const imagesLeft = [
-  Post1,
-  Post2,
-  Post3,
-  Post4,
-  Post5,
-  Post6,
+  Post1.src,
+  Post2.src,
+  Post3.src,
+  Post4.src,
+  Post5.src,
+  Post6.src,
 ];
 
 export const imagesRight = [
-  Post7,
-  Post8,
-  Post9,
-  Post10,
+  Post7.src,
+  Post8.src,
+  Post9.src,
+  Post10.src,
 ];
