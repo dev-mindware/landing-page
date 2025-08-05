@@ -1,3 +1,14 @@
+import Post1 from "@/assets/post1.png";
+import Post2 from "@/assets/post2.png";
+import Post3 from "@/assets/post3.png";
+import Post4 from "@/assets/post4.png";
+import Post5 from "@/assets/post5.png";
+import Post6 from "@/assets/post6.png";
+import Post7 from "@/assets/post7.png";
+import Post8 from "@/assets/post8.png";
+import Post9 from "@/assets/post9.png";
+import Post10 from "@/assets/post10.png";
+
 export interface Leader {
   id: number;
   name: string;
@@ -96,20 +107,19 @@ export const FAQList: FAQProps[] = [
   },
 ];
 
-// src/data/image-columns.ts
 
 export const imagesLeft = [
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/53971fdf-6a1f-4cb0-a29c-c5445d47d64f.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f44c6ae-7489-481c-81dc-48084f08ba0d.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5283d2b6-db86-4f90-96c6-a385c99f0d36.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/53971fdf-6a1f-4cb0-a29c-c5445d47d64f.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9f44c6ae-7489-481c-81dc-48084f08ba0d.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5283d2b6-db86-4f90-96c6-a385c99f0d36.png",
+  Post1,
+  Post2,
+  Post3,
+  Post4,
+  Post5,
+  Post6,
 ];
 
 export const imagesRight = [
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/95ebb7b1-ff96-4d27-9626-88a3f8a27693.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7057568c-21af-4929-9e61-f87016595ef4.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/95ebb7b1-ff96-4d27-9626-88a3f8a27693.png",
-  "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7057568c-21af-4929-9e61-f87016595ef4.png",
+  Post7,
+  Post8,
+  Post9,
+  Post10,
 ];
