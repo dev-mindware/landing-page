@@ -9,6 +9,10 @@ interface IntroProps {
   onComplete?: () => void;
 }
 
+const ONE_WEEK = 7 * 24 * 60 * 60 * 1000; // 7 dias em ms
+const LOCAL_KEY = "hasSeenIntro";
+const SESSION_KEY = "introSessionShown";
+
 export function Intro({ onComplete }: IntroProps) {
   const [counter, setCounter] = useState<number>(0);
   const [isComplete, setIsComplete] = useState<boolean>(false);
@@ -16,11 +20,10 @@ export function Intro({ onComplete }: IntroProps) {
   const reveal = React.useCallback(() => {
     const t1 = gsap.timeline({
       onComplete: () => {
-        const data = {
-          value: true,
-          timestamp: Date.now(),
-        };
-        sessionStorage.setItem("hasSeenIntro", JSON.stringify(data));
+        // Salvar timestamp no localStorage e marcar sessão atual
+        localStorage.setItem(LOCAL_KEY, Date.now().toString());
+        sessionStorage.setItem(SESSION_KEY, "true");
+
         setTimeout(() => {
           setIsComplete(true);
           onComplete?.();
@@ -78,24 +81,17 @@ export function Intro({ onComplete }: IntroProps) {
   }, [onComplete]);
 
   useEffect(() => {
-    const raw = sessionStorage.getItem("hasSeenIntro");
-    const expiresIn = 1000 * 60 * 60 * 24; // 24 horas
+    const sessionSeen = sessionStorage.getItem(SESSION_KEY);
+    const storedTime = localStorage.getItem(LOCAL_KEY);
+    const now = Date.now();
 
-    if (raw) {
-      try {
-        const { value, timestamp } = JSON.parse(raw);
-        const isExpired = Date.now() - timestamp > expiresIn;
+    const timeDiffOk =
+      !storedTime || now - parseInt(storedTime) > ONE_WEEK;
 
-        if (value && !isExpired) {
-          setIsComplete(true);
-          onComplete?.();
-          return;
-        } else {
-          sessionStorage.removeItem("hasSeenIntro");
-        }
-      } catch {
-        sessionStorage.removeItem("hasSeenIntro");
-      }
+    if (!timeDiffOk || sessionSeen === "true") {
+      setIsComplete(true);
+      onComplete?.();
+      return;
     }
 
     const totalDuration = 1400;
