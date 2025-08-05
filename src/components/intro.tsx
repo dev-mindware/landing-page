@@ -16,7 +16,11 @@ export function Intro({ onComplete }: IntroProps) {
   const reveal = React.useCallback(() => {
     const t1 = gsap.timeline({
       onComplete: () => {
-        localStorage.setItem("hasSeenIntro", "true");
+        const data = {
+          value: true,
+          timestamp: Date.now(),
+        };
+        sessionStorage.setItem("hasSeenIntro", JSON.stringify(data));
         setTimeout(() => {
           setIsComplete(true);
           onComplete?.();
@@ -37,11 +41,8 @@ export function Intro({ onComplete }: IntroProps) {
         ease: Expo.easeInOut,
         duration: 0.5,
       })
-      // Configurações iniciais de texto e imagem
       .set(".mindware-letter", { opacity: 0, y: 20 })
       .set(".mindware-logo", { opacity: 0, y: 20 })
-
-      // Animação das letras
       .to(
         ".mindware-letter",
         {
@@ -53,8 +54,6 @@ export function Intro({ onComplete }: IntroProps) {
         },
         "-=0.2"
       )
-
-      // Animação da imagem depois das letras
       .to(
         ".mindware-logo",
         {
@@ -65,7 +64,6 @@ export function Intro({ onComplete }: IntroProps) {
         },
         "+=0.2"
       )
-
       .to(".follow", {
         y: "-100%",
         ease: Expo.easeInOut,
@@ -80,12 +78,26 @@ export function Intro({ onComplete }: IntroProps) {
   }, [onComplete]);
 
   useEffect(() => {
-    const hasSeenIntro = localStorage.getItem("hasSeenIntro");
-    if (hasSeenIntro === "true") {
-    setIsComplete(true);
-    onComplete?.();
-    return;
-  }
+    const raw = sessionStorage.getItem("hasSeenIntro");
+    const expiresIn = 1000 * 60 * 60 * 24; // 24 horas
+
+    if (raw) {
+      try {
+        const { value, timestamp } = JSON.parse(raw);
+        const isExpired = Date.now() - timestamp > expiresIn;
+
+        if (value && !isExpired) {
+          setIsComplete(true);
+          onComplete?.();
+          return;
+        } else {
+          sessionStorage.removeItem("hasSeenIntro");
+        }
+      } catch {
+        sessionStorage.removeItem("hasSeenIntro");
+      }
+    }
+
     const totalDuration = 1400;
     const step = 100 / (totalDuration / 20);
 
